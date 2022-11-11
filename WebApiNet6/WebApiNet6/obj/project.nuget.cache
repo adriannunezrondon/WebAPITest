@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mg9Q+ENabGaeEq7mBpE/qJ7JPCxPUrAc/mVzx7ynRtBQ/2nSVl2ThScJm90QVrmXfipeoTgzYp6A+oU8YbTIkg==",
+  "dgSpecHash": "znYvvuNgbQxJgtcrGxacrGnA+G9MkboGjhMZsy17EYZzWKGcVpsQFBC7zXLAbFAK8dZ0LqVmYI0AAHUQ5UwEtA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\anuniez\\Documents\\Adrian\\Estudio\\ProyectoWebApi\\WebApiNet6\\WebApiNet6\\WebApiNet6.csproj",
+  "projectFilePath": "C:\\Users\\anuniez\\Documents\\Adrian\\Estudio\\ProyectoWebApi\\WebAPITest\\WebApiNet6\\WebApiNet6\\WebApiNet6.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anuniez\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\anuniez\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",
