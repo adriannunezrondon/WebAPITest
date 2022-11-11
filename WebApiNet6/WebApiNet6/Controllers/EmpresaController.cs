@@ -30,9 +30,9 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("Productos")]
-        public async Task<ActionResult<IEnumerable<Empresa>>> GetProductos()
+        public async Task<ActionResult<IEnumerable<Producto>>> GetProductos()
         {
-            return await _context.Empresas.ToListAsync();
+            return await _context.Productos.ToListAsync();
         }
 
     }
