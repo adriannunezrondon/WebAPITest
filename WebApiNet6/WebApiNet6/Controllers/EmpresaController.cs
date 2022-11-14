@@ -25,7 +25,9 @@ namespace WebAPI.Controllers
         [Route("Empresas")]
         public async Task<ActionResult<IEnumerable<Empresa>>> GetEmpresas()
         {
-            return await _context.Empresas.ToListAsync();
+            var result =await _context.Empresas.ToListAsync();
+            
+            return Ok(result);
         }
 
         [HttpGet]

@@ -11,8 +11,8 @@ using WebApiNet6.Contexts;
 namespace WebApiNet6.Migrations
 {
     [DbContext(typeof(AppDbContexts))]
-    [Migration("20221111181149_inicial_01")]
-    partial class inicial_01
+    [Migration("20221114144153_001")]
+    partial class _001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
