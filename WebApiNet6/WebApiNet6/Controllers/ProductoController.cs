@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApiNet6.Contexts;
 using WebApiNet6.Models;
 
-
+    
 
 namespace WebApiNet6.Controllers
 {
