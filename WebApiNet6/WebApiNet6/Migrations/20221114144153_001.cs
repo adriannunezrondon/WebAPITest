@@ -4,7 +4,7 @@
 
 namespace WebApiNet6.Migrations
 {
-    public partial class inicial_01 : Migration
+    public partial class _001 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

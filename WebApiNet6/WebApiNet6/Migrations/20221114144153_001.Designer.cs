@@ -11,8 +11,8 @@ using WebApiNet6.Contexts;
 namespace WebApiNet6.Migrations
 {
     [DbContext(typeof(AppDbContexts))]
-    [Migration("20221114114447_inicial002")]
-    partial class inicial002
+    [Migration("20221114144153_001")]
+    partial class _001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,10 +36,6 @@ namespace WebApiNet6.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Rut")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
