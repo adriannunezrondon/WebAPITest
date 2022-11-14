@@ -12,7 +12,7 @@ using WebApiNet6.Models;
 
 namespace WebApiNet6.Controllers
 {
-    [Route("producto/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ProductoController : ControllerBase
     {
@@ -25,14 +25,61 @@ namespace WebApiNet6.Controllers
         
         }
 
-        //public async Task<ActionResult<Producto>> putProducto(int id, Producto producto)
-        //{
-        //    _context.Productos.Add(producto);
-        //    await _context.SaveChangesAsync();
+        [HttpGet]
+        [Route("Productos")]
+        public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
+        {
+            var result = await _context.Productos.ToListAsync();
 
-        //    return 
-        
-        //}
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<ActionResult<Producto>> GetProductoID(int id)
+        {
+            var producto = await _context.Productos.FindAsync(id);
+
+            if (producto == null)
+            { 
+              return NotFound();
+            }
+            return Ok(producto);
+
+        }
+
+        [HttpPut("{id:int}")]
+
+        public async Task<ActionResult> ModificarProducto(int id,Producto producto)
+        {
+            if (producto is null)
+                return BadRequest(ModelState);
+
+            if (id !=producto.ID)
+                return BadRequest("Identificador no son iguales");
+
+            var existeProducto = await _context.Productos.FindAsync(id);
+
+
+            if (existeProducto is null)
+                return NotFound($"Entidad con Id ={id} not Fonciona");
+
+
+            _context.Productos.Remove(existeProducto);
+
+            _context.Productos.Add(producto);
+
+             var result =await _context.SaveChangesAsync();
+
+
+            if (result <= 0)
+                return BadRequest("Tus cambios no pueden salvados");
+
+            return NoContent();
+            
+
+
+        }
 
 
     }

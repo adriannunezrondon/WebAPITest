@@ -3308,11 +3308,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\59892\\Desktop\\OrismarCascaron\\WebAPITest\\WebApiNet6\\WebApiNet6\\WebApiNet6.csproj",
+      "projectUniqueName": "C:\\Users\\59892\\Desktop\\AlbertoCacaron\\WebAPITest\\WebApiNet6\\WebApiNet6\\WebApiNet6.csproj",
       "projectName": "WebApiNet6",
-      "projectPath": "C:\\Users\\59892\\Desktop\\OrismarCascaron\\WebAPITest\\WebApiNet6\\WebApiNet6\\WebApiNet6.csproj",
+      "projectPath": "C:\\Users\\59892\\Desktop\\AlbertoCacaron\\WebAPITest\\WebApiNet6\\WebApiNet6\\WebApiNet6.csproj",
       "packagesPath": "C:\\Users\\59892\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\59892\\Desktop\\OrismarCascaron\\WebAPITest\\WebApiNet6\\WebApiNet6\\obj\\",
+      "outputPath": "C:\\Users\\59892\\Desktop\\AlbertoCacaron\\WebAPITest\\WebApiNet6\\WebApiNet6\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
