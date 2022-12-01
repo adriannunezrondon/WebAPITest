@@ -8,12 +8,12 @@ using System.Collections;
 
 namespace WebApiNet6.Repository
 {
-    public class RepoProducto: IProducto
+    public class ProductoRepository: IProducto
     {
 
         private readonly AppDbContexts _context;
 
-        public RepoProducto (AppDbContexts context)
+        public ProductoRepository (AppDbContexts context)
         {
             _context = context;
         

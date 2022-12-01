@@ -12,8 +12,8 @@ namespace WebApiNet6
            services.AddDbContext<Contexts.AppDbContexts>(options =>
            options.UseSqlServer(configuration.GetConnectionString("DifaultConnection")));
 
-           services.AddTransient<IEmpresa,RepoEmpresa>();
-           services.AddTransient<IProducto, RepoProducto>(); 
+           services.AddTransient<IEmpresa,EmpresaRepository>();
+           services.AddTransient<IProducto, ProductoRepository>(); 
 
             return services;    
         }

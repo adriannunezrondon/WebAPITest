@@ -6,12 +6,12 @@ using WebApiNet6.Models;
 
 namespace WebApiNet6.Repository
 {
-    public class RepoEmpresa:IEmpresa
+    public class EmpresaRepository:IEmpresa
     {
 
         private readonly AppDbContexts _context;
 
-        public RepoEmpresa (AppDbContexts context) 
+        public EmpresaRepository (AppDbContexts context) 
         {
             _context = context;
         }
