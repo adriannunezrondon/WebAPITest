@@ -1,10 +1,11 @@
-using Microsoft.EntityFrameworkCore;
-using WebApiNet6.Contexts;
+using WebApiNet6;
+
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<AppDbContexts>(options=>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DifaultConnection")));
+//builder.Services.AddDbContext<AppDbContexts>(options =>
+//options.UseSqlServer(builder.Configuration.GetConnectionString("DifaultConnection")));
 
+builder.Services.AddDependencyInjection(builder.Configuration);
 // Add services to the container.
 
 builder.Services.AddControllers();

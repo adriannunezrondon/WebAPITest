@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using WebApiNet6.Contexts;
 using WebApiNet6.Models;
+using WebApiNet6.Interfases;
 
 namespace WebAPI.Controllers
 {
@@ -14,26 +9,66 @@ namespace WebAPI.Controllers
     [ApiController]
     public class EmpresaController : ControllerBase
     {
-        private readonly AppDbContexts _context;
 
-        public EmpresaController(AppDbContexts context)
+        private readonly IEmpresa _IEmpresaRepository;
+
+        public EmpresaController(IEmpresa IEmpresaRepository)
         {
-            _context = context;
+
+            _IEmpresaRepository = IEmpresaRepository;
         }
+
 
         [HttpGet]
         [Route("Empresas")]
         public async Task<ActionResult<IEnumerable<Empresa>>> GetEmpresas()
         {
-            return await _context.Empresas.ToListAsync();
+            return await _IEmpresaRepository.GetEmpresas();
         }
 
-        [HttpGet]
-        [Route("Productos")] 
-        public async Task<ActionResult<IEnumerable<Producto>>> GetProductos()
+
+        [HttpPost]
+        [Route("Insertar Empresa")]
+        public async Task<ActionResult<Empresa>> InsertarEmpresa(Empresa Empresa)
         {
-            return await _context.Productos.ToListAsync();
+
+            if (Empresa is null)
+                return BadRequest(ModelState);
+
+            return await _IEmpresaRepository.PostEmpresa(Empresa);
+
         }
+
+
+        [HttpPut]
+        [Route("Modificar")]
+
+        public async Task<ActionResult<Empresa>> ModificarEmpresa(int id, Empresa empresa)
+        {
+
+            if (empresa is null)
+                return NotFound();
+
+            if (id != empresa.ID)
+                return BadRequest("Los id de los elementon no coinciden");
+
+
+            return await _IEmpresaRepository.PutEmpresa(id, empresa);
+
+
+        }
+
+        [HttpDelete]
+        [Route("Eliminar Empresa")]
+
+        public async Task<ActionResult<Empresa>> EliminarEmpresa(int id)
+        {
+            if (id == 0)
+                return BadRequest("No puede ser vacio el id a eliminar");
+            return await _IEmpresaRepository.DeleteEmpresa(id);
+        
+        }
+       
 
     }
 }

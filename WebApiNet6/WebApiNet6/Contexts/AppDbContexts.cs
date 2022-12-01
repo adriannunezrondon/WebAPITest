@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApiNet6.Models;
 
+
+
+
 namespace WebApiNet6.Contexts
 {
     public class AppDbContexts: DbContext
