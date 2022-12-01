@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Productos")]
+        [Route("Productos")] 
         public async Task<ActionResult<IEnumerable<Producto>>> GetProductos()
         {
             return await _context.Productos.ToListAsync();
