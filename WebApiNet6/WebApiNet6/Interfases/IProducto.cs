@@ -1,6 +1,4 @@
 ﻿
-
-
 using Microsoft.AspNetCore.Mvc;
 using WebApiNet6.Models;
 
