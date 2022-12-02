@@ -3,8 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApiNet6.Contexts;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
-using System.Linq;
-using System.Collections;
+
 
 namespace WebApiNet6.Repository
 {
