@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApiNet6.Models;
 using WebApiNet6.Interfases;
+using Microsoft.AspNetCore.JsonPatch.Internal;
+using System.Collections;
 
 namespace WebAPI.Controllers
 {
@@ -68,7 +70,14 @@ namespace WebAPI.Controllers
             return await _IEmpresaRepository.DeleteEmpresa(id);
         
         }
-       
+
+        //[HttpGet]
+        //[Route("invento Mio")]
+        //public async Task<ActionResult<int>>Invento()
+        //{
+        //    return  await _IEmpresaRepository.GetEmpresaProcedure();
+
+        //}
 
     }
 }

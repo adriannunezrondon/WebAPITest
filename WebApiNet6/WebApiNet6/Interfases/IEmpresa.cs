@@ -9,6 +9,7 @@ namespace WebApiNet6.Interfases
         Task<ActionResult<Empresa>> PostEmpresa(Empresa empresa);
         Task<ActionResult<Empresa>> PutEmpresa(int id, Empresa empresa);
         Task<ActionResult<Empresa>> DeleteEmpresa(int id);
+       // Task<ActionResult<List<Empresa>>> GetEmpresaProcedure(); 
 
     }
 }

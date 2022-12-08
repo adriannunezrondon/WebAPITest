@@ -12,6 +12,7 @@ namespace WebApiNet6.Interfases
         Task<ActionResult<Producto>> PutProducto(int id, Producto pro);
         Task<ActionResult<List<Producto>>> ProductoMayorPrecio();
         Task<ActionResult<Producto>> DeleteProducto(int id);
+        Task<ActionResult<List<Producto>>> LosTresProductosDeMayorPrecio();
 
 
     }

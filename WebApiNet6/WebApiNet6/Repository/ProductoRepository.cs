@@ -43,7 +43,7 @@ namespace WebApiNet6.Repository
 
         }
 
-        public async Task<ActionResult<Producto>> PutProducto(int id, Producto pro)
+        public async Task<ActionResult<Producto>?> PutProducto(int id, Producto pro)
         {
 
             var existe = await _context.Productos.FindAsync(id);
@@ -67,7 +67,7 @@ namespace WebApiNet6.Repository
         }
 
 
-        public async Task<ActionResult<Producto>> DeleteProducto(int id)
+        public async Task<ActionResult<Producto>?> DeleteProducto(int id)
         {
             var existe = await _context.Productos.FindAsync(id);
 
@@ -77,6 +77,17 @@ namespace WebApiNet6.Repository
             _context.Productos.Remove(existe);
             await _context.SaveChangesAsync();
             return existe;
+        }
+
+        public async Task<ActionResult<List<Producto>>> LosTresProductosDeMayorPrecio()
+        {
+            List<Producto> lista = await _context.Productos.ToListAsync();
+
+            if (lista.Count==0)
+                return null;
+
+            List<Producto> linq = (from p in lista orderby p.Precio descending select p).Take(3).ToList();
+            return linq;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 using WebApiNet6.Contexts;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
@@ -74,6 +75,13 @@ namespace WebApiNet6.Repository
 
         }
 
+        //public async Task<ActionResult<List<Empresa>>> GetEmpresaProcedure()
+        //{
+        //    var lista = _context.Database.ExecuteSqlInterpolatedAsync($@"EXECUTE Invento");
 
+
+        //    return lista
+
+        //}
     }
 }
