@@ -6,14 +6,16 @@ namespace WebApiNet6
 {
     public static class InyeccioDependencias
     {
+        
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
+            
+            services.AddDbContext<Contexts.AppDbContexts>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DifaultConnection")));
 
-           services.AddDbContext<Contexts.AppDbContexts>(options =>
-           options.UseSqlServer(configuration.GetConnectionString("DifaultConnection")));
+            services.AddTransient<IEmpresa,EmpresaRepository>();
 
-           services.AddTransient<IEmpresa,EmpresaRepository>();
-           services.AddTransient<IProducto, ProductoRepository>(); 
+            services.AddTransient<IProducto, ProductoRepository>();
 
             return services;    
         }

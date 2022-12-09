@@ -14,7 +14,31 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
+//**************************************************************************************
+//string _MyCors = "";
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: _MyCors, builder =>
+//    {
+//        builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+//        .AllowAnyHeader()
+//        .AllowAnyMethod();
 
+//    });
+//});
+
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("NuevaPolitica", app => {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    
+    });
+
+});
+
+//***************************************************************************************************
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +48,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("NuevaPolitica");
 app.UseAuthorization();
 
 app.MapControllers();
