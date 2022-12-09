@@ -409,3 +409,5 @@ Tailored/2_ServicesLayer/WebServerApi/Tailored.ICBanking.AppServer.Api/nlog-inte
 /Tailored/2_ServicesLayer/WebServerApi/Tailored.ICBanking.WebServer.Api/nlog-internal-webserver.txt
 /Tailored/Daemons/Framework.MessagingDaemon/nlog-internal.txt
 /WebApiNet6/.vs/WebApiNet6/v17/.suo
+/WebApiNet6/WebApiNet6/obj/Debug/net6.0/WebApiNet6.assets.cache
+/WebApiNet6/WebApiNet6/obj/Debug/net6.0/WebApiNet6.csproj.FileListAbsolute.txt
