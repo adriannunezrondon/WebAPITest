@@ -18,7 +18,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(option =>
 {
-    option.AddPolicy("NuevaPolitica", app => {
+    option.AddPolicy("NuevaPolitica", app =>
+    {
         app.AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod();

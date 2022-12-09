@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using WebApiNet6.Models;
 using WebApiNet6.Interfases;
+using WebApiNet6.Models;
 
 namespace WebAPI.Controllers
 {
@@ -66,9 +66,9 @@ namespace WebAPI.Controllers
             if (id == 0)
                 return BadRequest("No puede ser vacio el id a eliminar");
             return await _IEmpresaRepository.DeleteEmpresa(id);
-        
+
         }
-       
+
 
     }
 }

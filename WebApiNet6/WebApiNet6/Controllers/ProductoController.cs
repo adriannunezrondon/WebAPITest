@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using WebApiNet6.Models;
 using WebApiNet6.Interfases;
+using WebApiNet6.Models;
 
 
 namespace WebApiNet6.Controllers
@@ -39,10 +39,10 @@ namespace WebApiNet6.Controllers
 
         public async Task<ActionResult<Producto>> BuscarProductoPorId(int id)
         {
-            if (id==0)
+            if (id == 0)
                 return BadRequest("El id que pasaste no es correcto!!");
 
-            return await _IProductoRepository.GetProductoPorID(id); 
+            return await _IProductoRepository.GetProductoPorID(id);
 
         }
 
@@ -50,11 +50,11 @@ namespace WebApiNet6.Controllers
         //*********************************************************************************************
         [HttpPut]
 
-        public async Task<ActionResult<Producto>>ModificarProducto(int id, Producto producto)
+        public async Task<ActionResult<Producto>> ModificarProducto(int id, Producto producto)
         {
 
-            if((producto is null) || (id != producto.ID))
-                     return BadRequest("El Producto es nulo o son diferentes los identificadores");
+            if ((producto is null) || (id != producto.ID))
+                return BadRequest("El Producto es nulo o son diferentes los identificadores");
 
 
             return await _IProductoRepository.PutProducto(id, producto);
@@ -66,7 +66,7 @@ namespace WebApiNet6.Controllers
 
         //***********************************************************************************************
         [HttpGet("Producto_Mayor_Precio")]
-        public async Task<ActionResult<List<Producto>>>ProductoDeMayorPrecio()
+        public async Task<ActionResult<List<Producto>>> ProductoDeMayorPrecio()
         {
             return await _IProductoRepository.ProductoMayorPrecio();
         }
@@ -82,7 +82,7 @@ namespace WebApiNet6.Controllers
                 return BadRequest("No existe un identificador como ese!!");
 
             return await _IProductoRepository.DeleteProducto(id);
-        
+
         }
 
 

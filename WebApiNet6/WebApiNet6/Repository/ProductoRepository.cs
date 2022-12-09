@@ -3,24 +3,22 @@ using Microsoft.EntityFrameworkCore;
 using WebApiNet6.Contexts;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
-using System.Linq;
-using System.Collections;
 
 namespace WebApiNet6.Repository
 {
-    public class ProductoRepository: IProducto
+    public class ProductoRepository : IProducto
     {
 
         private readonly AppDbContexts _context;
 
-        public ProductoRepository (AppDbContexts context)
+        public ProductoRepository(AppDbContexts context)
         {
             _context = context;
-        
+
         }
 
 
-/// ///////////////////////////////////////////////////////////////////////////////////
+        /// ///////////////////////////////////////////////////////////////////////////////////
 
         public async Task<ActionResult<List<Producto>>> GetProducto()
         {
@@ -29,7 +27,7 @@ namespace WebApiNet6.Repository
             return result;
         }
 
- 
+
         /// //////////////////////////////////////////////////////////////////////////////
 
         public async Task<ActionResult<Producto>> GetProductoPorID(int id)
@@ -54,7 +52,7 @@ namespace WebApiNet6.Repository
 
             _context.Productos.Remove(existe);
             _context.Productos.Add(pro);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return pro;
         }
