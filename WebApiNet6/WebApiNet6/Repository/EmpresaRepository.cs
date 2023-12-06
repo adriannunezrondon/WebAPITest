@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections;
 using WebApiNet6.Contexts;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
@@ -22,9 +21,15 @@ namespace WebApiNet6.Repository
         public async Task<ActionResult<IEnumerable<Empresa>>> GetEmpresas()
         {
             var result = await _context.Empresas.ToListAsync();
-           
             return result;
         }
+
+        public async Task<ActionResult<Empresa>> GetEmpresaById(int id)
+        {
+            var result = await _context.Empresas.FindAsync(id);
+            return result;
+        }
+        //GetEmpresasById
 
         ////INSERTAR EMPRESAS
 
@@ -32,28 +37,25 @@ namespace WebApiNet6.Repository
         public async Task<ActionResult<Empresa>> PostEmpresa(Empresa empresa)
         {
 
-
             _context.Empresas.Add(empresa);
-            var save = await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return empresa;
-
-           // return CreatedAtAction("GetEmpresas", new { ID = empresa.ID }, empresa);
 
         }
 
         public async Task<ActionResult<Empresa>> PutEmpresa(int id, Empresa empresa)
         {
-            // bool existe = await _context.Empresas.Where(x=>x.ID == id).AsNoTracking().AnyAsync();
 
             var existe = await _context.Empresas.FindAsync(id);
 
             if (existe is null)
                 return null;
            
-
-             _context.Empresas.Remove(existe);
-             _context.Empresas.Add(empresa);
+            /* _context.Empresas.Remove(existe);
+             _context.Empresas.Add(empresa);*/
+            existe.Nombre= empresa.Nombre;
+            existe.Direccion= empresa.Direccion;
              await _context.SaveChangesAsync();
 
             return empresa;
@@ -70,18 +72,12 @@ namespace WebApiNet6.Repository
                 return null;
 
             _context.Empresas.Remove(empresa);
+            await _context.SaveChangesAsync();
 
             return empresa;
 
         }
 
-        //public async Task<ActionResult<List<Empresa>>> GetEmpresaProcedure()
-        //{
-        //    var lista = _context.Database.ExecuteSqlInterpolatedAsync($@"EXECUTE Invento");
-
-
-        //    return lista
-
-        //}
+    
     }
 }

@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApiNet6.Models;
 using WebApiNet6.Interfases;
-using Microsoft.AspNetCore.JsonPatch.Internal;
-using System.Collections;
+
 
 namespace WebAPI.Controllers
 {
@@ -24,27 +23,52 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("Empresas")]
-        public async Task<ActionResult<IEnumerable<Empresa>>> GetEmpresas()
+        public async Task<ActionResult<IEnumerable<Empresa>>> AllEmpresas()
         {
-            return await _IEmpresaRepository.GetEmpresas();
+            
+            var result = await _IEmpresaRepository.GetEmpresas();
+            if(result is null)
+                return NotFound();
+            return result;
+        }
+
+        [HttpGet]
+        [Route("GetEmpresa/{id}")]
+        public async Task<ActionResult<Empresa>> GetEmpresasById(int id)
+        {
+
+            var result = await _IEmpresaRepository.GetEmpresaById(id);
+            if (result is null)
+                return NotFound();
+            return result;
+        }
+
+        [HttpGet]
+        [Route("GetNameEmpresa/{id}")]
+        public async Task<ActionResult<string>?> GetNameEmpresasById(int id)
+        {
+
+            var result = await _IEmpresaRepository.GetEmpresaById(id);
+            if (result is null)
+                return NotFound();
+            return result.Value.Nombre;
         }
 
 
         [HttpPost]
-        [Route("Insertar Empresa")]
+        [Route("InsertarEmpresa")]
         public async Task<ActionResult<Empresa>> InsertarEmpresa(Empresa Empresa)
         {
 
             if (Empresa is null)
                 return BadRequest(ModelState);
-
             return await _IEmpresaRepository.PostEmpresa(Empresa);
 
         }
 
 
         [HttpPut]
-        [Route("Modificar")]
+        [Route("Modificar/{id}")]
 
         public async Task<ActionResult<Empresa>> ModificarEmpresa(int id, Empresa empresa)
         {
@@ -55,14 +79,13 @@ namespace WebAPI.Controllers
             if (id != empresa.ID)
                 return BadRequest("Los id de los elementon no coinciden");
 
-
             return await _IEmpresaRepository.PutEmpresa(id, empresa);
 
 
         }
 
         [HttpDelete]
-        [Route("Eliminar Empresa")]
+        [Route("EliminarEmpresa/{id}")]
 
         public async Task<ActionResult<Empresa>> EliminarEmpresa(int id)
         {
@@ -72,13 +95,7 @@ namespace WebAPI.Controllers
         
         }
 
-        //[HttpGet]
-        //[Route("invento Mio")]
-        //public async Task<ActionResult<int>>Invento()
-        //{
-        //    return  await _IEmpresaRepository.GetEmpresaProcedure();
-
-        //}
+       
 
     }
 }

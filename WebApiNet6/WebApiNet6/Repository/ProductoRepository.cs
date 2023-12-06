@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using WebApiNet6.Contexts;
+using WebApiNet6.DTO;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
+using Dapper;
 
 
 namespace WebApiNet6.Repository
@@ -11,6 +14,7 @@ namespace WebApiNet6.Repository
     {
 
         private readonly AppDbContexts _context;
+        private readonly object configuration;
 
         public ProductoRepository (AppDbContexts context)
         {
@@ -28,6 +32,15 @@ namespace WebApiNet6.Repository
             return result;
         }
 
+        public async Task<ActionResult<Producto>> PostProducto(Producto pro)
+        {
+            if (pro is null)
+                return null;
+            _context.Productos.Add(pro);
+            await _context.SaveChangesAsync();
+            return pro;
+        }
+
  
         /// //////////////////////////////////////////////////////////////////////////////
 
@@ -43,7 +56,7 @@ namespace WebApiNet6.Repository
 
         }
 
-        public async Task<ActionResult<Producto>?> PutProducto(int id, Producto pro)
+        public async Task<ActionResult<Producto>> PutProducto(int id, Producto pro)
         {
 
             var existe = await _context.Productos.FindAsync(id);
@@ -67,7 +80,7 @@ namespace WebApiNet6.Repository
         }
 
 
-        public async Task<ActionResult<Producto>?> DeleteProducto(int id)
+        public async Task<ActionResult<Producto>> DeleteProducto(int id)
         {
             var existe = await _context.Productos.FindAsync(id);
 
@@ -90,6 +103,34 @@ namespace WebApiNet6.Repository
             return linq;
         }
 
+        public async Task<ActionResult<List<DTOproductos>>> DTOTodosProducto()
+        {
+            // Cargar configuración desde appsettings.json
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            var sql = "SELECT P.ID, P.Nombre, P.Categorias, P.Descripcion, P.Precio, P.Unidades, E.Nombre as Empresa "+
+                       "FROM Productos P INNER JOIN Empresas E ON (P.EmpresaID = E.ID)";
+             
+
+            using (SqlConnection connection = new SqlConnection(configuration.GetConnectionString("DifaultConnection"))) 
+            { 
+                connection.Open();
+                try {
+                    var result = await connection.QueryAsync<DTOproductos>(sql);
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
+               
+            }
+               
+        }
     }
 
 

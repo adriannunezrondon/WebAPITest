@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiNet6.Contexts;
 
@@ -10,9 +11,10 @@ using WebApiNet6.Contexts;
 namespace WebApiNet6.Migrations
 {
     [DbContext(typeof(AppDbContexts))]
-    partial class AppDbContextsModelSnapshot : ModelSnapshot
+    [Migration("20230918230427_primero0001")]
+    partial class primero0001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -6,5 +6,6 @@
         public string? Nombre { get; set; }
         public string? Direccion { get; set; }
         public ICollection<Producto>? Producto { get; set; }
+       
     }
 }

@@ -2,9 +2,10 @@
 using WebApiNet6.Interfases;
 using WebApiNet6.Repository;
 
+
 namespace WebApiNet6
 {
-    public static class InyeccioDependencias
+    public static class InyeccionDependencias
     {
         
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
@@ -13,8 +14,8 @@ namespace WebApiNet6
             services.AddDbContext<Contexts.AppDbContexts>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DifaultConnection")));
 
+            //Inyecta el repositorio con la interfaz
             services.AddTransient<IEmpresa,EmpresaRepository>();
-
             services.AddTransient<IProducto, ProductoRepository>();
 
             return services;    
