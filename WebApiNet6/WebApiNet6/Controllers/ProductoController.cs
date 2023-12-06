@@ -56,7 +56,7 @@ namespace WebApiNet6.Controllers
 
 
         [HttpGet]
-        [Route("BuscarProdictoPorId/{id}")]
+        [Route("BuscarProdictoPorId {id}")]
 
         public async Task<ActionResult<Producto>> BuscarProductoPorId(int id)
         {
@@ -64,7 +64,7 @@ namespace WebApiNet6.Controllers
             var pro = await _IProductoRepository.GetProductoPorID(id);
             if (pro is null)
                 return BadRequest("El id que pasaste no es correcto!!");
-            return Ok(pro);
+            return Ok(pro.Value);
 
         }
 
