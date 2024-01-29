@@ -19,7 +19,19 @@ namespace WebApiNet6.Controllers
 
         }
 
+<<<<<<< Updated upstream
 
+=======
+        [HttpPost]
+        [Route("InsertarProductos")]
+        public async Task<ActionResult<Producto>> Insertar(Producto Pro)
+        {
+            if (await _IProductoRepository.PostProducto(Pro) is null)
+                return BadRequest(ModelState);
+            return Ok(ModelState);
+
+        }
+>>>>>>> Stashed changes
 
 
 
@@ -29,7 +41,24 @@ namespace WebApiNet6.Controllers
         {
             var result = await _IProductoRepository.GetProducto();
 
+<<<<<<< Updated upstream
             return Ok(result);
+=======
+            return Ok(result.Value);
+        }
+
+        [HttpGet]
+        [Route("DTOProductos")]
+        public async Task<ActionResult<IEnumerable<DTOproductos>>> DTOTodosProducto()
+        {
+            var result = await _IProductoRepository.DTOTodosProducto();
+            if (result != null)
+            {
+                return Ok(result.Value);
+            }
+            return BadRequest(ModelState);
+
+>>>>>>> Stashed changes
         }
 
 
@@ -39,7 +68,13 @@ namespace WebApiNet6.Controllers
 
         public async Task<ActionResult<Producto>> BuscarProductoPorId(int id)
         {
+<<<<<<< Updated upstream
             if (id == 0)
+=======
+
+            var pro = await _IProductoRepository.GetProductoPorID(id);
+            if (pro is null)
+>>>>>>> Stashed changes
                 return BadRequest("El id que pasaste no es correcto!!");
 
             return await _IProductoRepository.GetProductoPorID(id);
@@ -48,7 +83,7 @@ namespace WebApiNet6.Controllers
 
 
         //*********************************************************************************************
-        [HttpPut]
+        [HttpPut ("{id}")]
 
         public async Task<ActionResult<Producto>> ModificarProducto(int id, Producto producto)
         {
@@ -74,7 +109,7 @@ namespace WebApiNet6.Controllers
 
 
         //**************************************************************************************************
-        [HttpDelete("Eliminar_Producto")]
+        [HttpDelete("Eliminar_Producto/{id}")]
         public async Task<ActionResult<Producto>> EliminarProducto(int id)
         {
 

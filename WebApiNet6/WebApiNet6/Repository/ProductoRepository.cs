@@ -10,6 +10,10 @@ namespace WebApiNet6.Repository
     {
 
         private readonly AppDbContexts _context;
+<<<<<<< Updated upstream
+=======
+        //private readonly object configuration;
+>>>>>>> Stashed changes
 
         public ProductoRepository(AppDbContexts context)
         {
@@ -50,9 +54,23 @@ namespace WebApiNet6.Repository
             if (existe is null)
                 return null;
 
+<<<<<<< Updated upstream
             _context.Productos.Remove(existe);
             _context.Productos.Add(pro);
             await _context.SaveChangesAsync();
+=======
+           // _context.Productos.Remove(existe);
+            //_context.Productos.Add(pro);
+            existe.Categorias = pro.Categorias;
+            existe.Descripcion = pro.Descripcion;
+            existe.EmpresaID = pro.EmpresaID;
+            existe.Unidades = pro.Unidades;
+            existe.Precio = pro.Precio;
+            existe.Nombre= pro.Nombre;
+
+
+           await _context.SaveChangesAsync();
+>>>>>>> Stashed changes
 
             return pro;
         }
