@@ -95,10 +95,7 @@ namespace WebAPI.Controllers
 
         }
 
-<<<<<<< HEAD
        
-=======
->>>>>>> Main
 
     }
 }

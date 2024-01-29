@@ -21,10 +21,7 @@ namespace WebApiNet6.Repository
         public async Task<ActionResult<IEnumerable<Empresa>>> GetEmpresas()
         {
             var result = await _context.Empresas.ToListAsync();
-<<<<<<< HEAD
-=======
 
->>>>>>> Main
             return result;
         }
 
@@ -46,11 +43,8 @@ namespace WebApiNet6.Repository
 
             return empresa;
 
-<<<<<<< HEAD
-=======
             // return CreatedAtAction("GetEmpresas", new { ID = empresa.ID }, empresa);
 
->>>>>>> Main
         }
 
         public async Task<ActionResult<Empresa>> PutEmpresa(int id, Empresa empresa)
@@ -60,20 +54,17 @@ namespace WebApiNet6.Repository
 
             if (existe is null)
                 return null;
-<<<<<<< HEAD
            
             /* _context.Empresas.Remove(existe);
              _context.Empresas.Add(empresa);*/
             existe.Nombre= empresa.Nombre;
             existe.Direccion= empresa.Direccion;
              await _context.SaveChangesAsync();
-=======
 
 
             _context.Empresas.Remove(existe);
             _context.Empresas.Add(empresa);
             await _context.SaveChangesAsync();
->>>>>>> Main
 
             return empresa;
 

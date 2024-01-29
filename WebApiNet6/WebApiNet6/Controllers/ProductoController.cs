@@ -1,12 +1,9 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using WebApiNet6.Interfases;
-<<<<<<< HEAD
 using WebApiNet6.DTO;
-=======
 using WebApiNet6.Models;
 
->>>>>>> Main
 
 namespace WebApiNet6.Controllers
 {

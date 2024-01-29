@@ -5,11 +5,7 @@ using WebApiNet6.Contexts;
 using WebApiNet6.DTO;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
-<<<<<<< HEAD
-using Dapper;
 
-=======
->>>>>>> Main
 
 namespace WebApiNet6.Repository
 {
@@ -17,14 +13,8 @@ namespace WebApiNet6.Repository
     {
 
         private readonly AppDbContexts _context;
-<<<<<<< HEAD
         private readonly object configuration;
-=======
-<<<<<<< Updated upstream
-=======
         //private readonly object configuration;
->>>>>>> Stashed changes
->>>>>>> Main
 
         public ProductoRepository(AppDbContexts context)
         {
