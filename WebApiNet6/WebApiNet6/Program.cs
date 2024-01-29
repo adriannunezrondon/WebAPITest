@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
+<<<<<<< HEAD
 builder.Services.AddCors(option =>
 {
     option.AddPolicy("NuevaPolitica", app => {
@@ -23,6 +24,22 @@ builder.Services.AddCors(option =>
     });
 
 });
+=======
+
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("NuevaPolitica", app =>
+    {
+        app.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+
+    });
+
+});
+
+//***************************************************************************************************
+>>>>>>> Main
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,8 +1,12 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using WebApiNet6.Models;
 using WebApiNet6.Interfases;
+<<<<<<< HEAD
 using WebApiNet6.DTO;
+=======
+using WebApiNet6.Models;
+
+>>>>>>> Main
 
 namespace WebApiNet6.Controllers
 {
@@ -19,6 +23,7 @@ namespace WebApiNet6.Controllers
 
         }
 
+<<<<<<< HEAD
         [HttpPost]
         [Route("InsertarProductos")]
         public async Task<ActionResult<Producto>> Insertar(Producto Pro)
@@ -28,6 +33,21 @@ namespace WebApiNet6.Controllers
             return Ok(ModelState);
         
         }
+=======
+<<<<<<< Updated upstream
+
+=======
+        [HttpPost]
+        [Route("InsertarProductos")]
+        public async Task<ActionResult<Producto>> Insertar(Producto Pro)
+        {
+            if (await _IProductoRepository.PostProducto(Pro) is null)
+                return BadRequest(ModelState);
+            return Ok(ModelState);
+
+        }
+>>>>>>> Stashed changes
+>>>>>>> Main
 
 
 
@@ -37,6 +57,12 @@ namespace WebApiNet6.Controllers
         {
             var result = await _IProductoRepository.GetProducto();
 
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+            return Ok(result);
+=======
+>>>>>>> Main
             return Ok(result.Value);
         }
 
@@ -45,12 +71,21 @@ namespace WebApiNet6.Controllers
         public async Task<ActionResult<IEnumerable<DTOproductos>>> DTOTodosProducto()
         {
             var result = await _IProductoRepository.DTOTodosProducto();
+<<<<<<< HEAD
             if (result !=  null)
+=======
+            if (result != null)
+>>>>>>> Main
             {
                 return Ok(result.Value);
             }
             return BadRequest(ModelState);
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> Stashed changes
+>>>>>>> Main
         }
 
 
@@ -60,23 +95,36 @@ namespace WebApiNet6.Controllers
 
         public async Task<ActionResult<Producto>> BuscarProductoPorId(int id)
         {
+<<<<<<< HEAD
      
             var pro = await _IProductoRepository.GetProductoPorID(id);
             if (pro is null)
                 return BadRequest("El id que pasaste no es correcto!!");
             return Ok(pro.Value);
+=======
+<<<<<<< Updated upstream
+            if (id == 0)
+=======
+
+            var pro = await _IProductoRepository.GetProductoPorID(id);
+            if (pro is null)
+>>>>>>> Stashed changes
+                return BadRequest("El id que pasaste no es correcto!!");
+
+            return await _IProductoRepository.GetProductoPorID(id);
+>>>>>>> Main
 
         }
 
 
         //*********************************************************************************************
-        [HttpPut]
+        [HttpPut ("{id}")]
 
-        public async Task<ActionResult<Producto>>ModificarProducto(int id, Producto producto)
+        public async Task<ActionResult<Producto>> ModificarProducto(int id, Producto producto)
         {
 
-            if((producto is null) || (id != producto.ID))
-                     return BadRequest("El Producto es nulo o son diferentes los identificadores");
+            if ((producto is null) || (id != producto.ID))
+                return BadRequest("El Producto es nulo o son diferentes los identificadores");
 
 
             return await _IProductoRepository.PutProducto(id, producto);
@@ -88,7 +136,7 @@ namespace WebApiNet6.Controllers
 
         //***********************************************************************************************
         [HttpGet("Producto_Mayor_Precio")]
-        public async Task<ActionResult<List<Producto>>>ProductoDeMayorPrecio()
+        public async Task<ActionResult<List<Producto>>> ProductoDeMayorPrecio()
         {
             return await _IProductoRepository.ProductoMayorPrecio();
         }
@@ -96,7 +144,7 @@ namespace WebApiNet6.Controllers
 
 
         //**************************************************************************************************
-        [HttpDelete("Eliminar_Producto")]
+        [HttpDelete("Eliminar_Producto/{id}")]
         public async Task<ActionResult<Producto>> EliminarProducto(int id)
         {
 
@@ -104,7 +152,7 @@ namespace WebApiNet6.Controllers
                 return BadRequest("No existe un identificador como ese!!");
 
             return await _IProductoRepository.DeleteProducto(id);
-        
+
         }
 
 

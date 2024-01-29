@@ -5,25 +5,35 @@ using WebApiNet6.Contexts;
 using WebApiNet6.DTO;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
+<<<<<<< HEAD
 using Dapper;
 
+=======
+>>>>>>> Main
 
 namespace WebApiNet6.Repository
 {
-    public class ProductoRepository: IProducto
+    public class ProductoRepository : IProducto
     {
 
         private readonly AppDbContexts _context;
+<<<<<<< HEAD
         private readonly object configuration;
+=======
+<<<<<<< Updated upstream
+=======
+        //private readonly object configuration;
+>>>>>>> Stashed changes
+>>>>>>> Main
 
-        public ProductoRepository (AppDbContexts context)
+        public ProductoRepository(AppDbContexts context)
         {
             _context = context;
-        
+
         }
 
 
-/// ///////////////////////////////////////////////////////////////////////////////////
+        /// ///////////////////////////////////////////////////////////////////////////////////
 
         public async Task<ActionResult<List<Producto>>> GetProducto()
         {
@@ -32,6 +42,7 @@ namespace WebApiNet6.Repository
             return result;
         }
 
+<<<<<<< HEAD
         public async Task<ActionResult<Producto>> PostProducto(Producto pro)
         {
             if (pro is null)
@@ -42,6 +53,9 @@ namespace WebApiNet6.Repository
         }
 
  
+=======
+
+>>>>>>> Main
         /// //////////////////////////////////////////////////////////////////////////////
 
         public async Task<ActionResult<Producto>> GetProductoPorID(int id)
@@ -64,9 +78,23 @@ namespace WebApiNet6.Repository
             if (existe is null)
                 return null;
 
+<<<<<<< Updated upstream
             _context.Productos.Remove(existe);
             _context.Productos.Add(pro);
+            await _context.SaveChangesAsync();
+=======
+           // _context.Productos.Remove(existe);
+            //_context.Productos.Add(pro);
+            existe.Categorias = pro.Categorias;
+            existe.Descripcion = pro.Descripcion;
+            existe.EmpresaID = pro.EmpresaID;
+            existe.Unidades = pro.Unidades;
+            existe.Precio = pro.Precio;
+            existe.Nombre= pro.Nombre;
+
+
            await _context.SaveChangesAsync();
+>>>>>>> Stashed changes
 
             return pro;
         }

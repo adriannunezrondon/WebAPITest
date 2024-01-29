@@ -6,12 +6,12 @@ using WebApiNet6.Models;
 
 namespace WebApiNet6.Repository
 {
-    public class EmpresaRepository:IEmpresa
+    public class EmpresaRepository : IEmpresa
     {
 
         private readonly AppDbContexts _context;
 
-        public EmpresaRepository (AppDbContexts context) 
+        public EmpresaRepository(AppDbContexts context)
         {
             _context = context;
         }
@@ -21,6 +21,10 @@ namespace WebApiNet6.Repository
         public async Task<ActionResult<IEnumerable<Empresa>>> GetEmpresas()
         {
             var result = await _context.Empresas.ToListAsync();
+<<<<<<< HEAD
+=======
+
+>>>>>>> Main
             return result;
         }
 
@@ -42,6 +46,11 @@ namespace WebApiNet6.Repository
 
             return empresa;
 
+<<<<<<< HEAD
+=======
+            // return CreatedAtAction("GetEmpresas", new { ID = empresa.ID }, empresa);
+
+>>>>>>> Main
         }
 
         public async Task<ActionResult<Empresa>> PutEmpresa(int id, Empresa empresa)
@@ -51,21 +60,29 @@ namespace WebApiNet6.Repository
 
             if (existe is null)
                 return null;
+<<<<<<< HEAD
            
             /* _context.Empresas.Remove(existe);
              _context.Empresas.Add(empresa);*/
             existe.Nombre= empresa.Nombre;
             existe.Direccion= empresa.Direccion;
              await _context.SaveChangesAsync();
+=======
+
+
+            _context.Empresas.Remove(existe);
+            _context.Empresas.Add(empresa);
+            await _context.SaveChangesAsync();
+>>>>>>> Main
 
             return empresa;
-        
+
         }
 
 
         public async Task<ActionResult<Empresa>> DeleteEmpresa(int id)
-        { 
-        
+        {
+
             var empresa = await _context.Empresas.FindAsync(id);
 
             if (empresa is null)
