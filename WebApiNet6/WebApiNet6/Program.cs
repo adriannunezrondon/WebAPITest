@@ -1,6 +1,8 @@
 using WebApiNet6;
 
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDependencyInjection(builder.Configuration);

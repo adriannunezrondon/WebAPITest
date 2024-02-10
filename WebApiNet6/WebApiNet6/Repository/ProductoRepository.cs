@@ -5,6 +5,7 @@ using WebApiNet6.Contexts;
 using WebApiNet6.DTO;
 using WebApiNet6.Interfases;
 using WebApiNet6.Models;
+using Dapper;
 
 
 namespace WebApiNet6.Repository
@@ -32,7 +33,7 @@ namespace WebApiNet6.Repository
             return result;
         }
 
-<<<<<<< HEAD
+
         public async Task<ActionResult<Producto>> PostProducto(Producto pro)
         {
             if (pro is null)
@@ -43,9 +44,7 @@ namespace WebApiNet6.Repository
         }
 
  
-=======
 
->>>>>>> Main
         /// //////////////////////////////////////////////////////////////////////////////
 
         public async Task<ActionResult<Producto>> GetProductoPorID(int id)
@@ -68,11 +67,11 @@ namespace WebApiNet6.Repository
             if (existe is null)
                 return null;
 
-<<<<<<< Updated upstream
+
             _context.Productos.Remove(existe);
             _context.Productos.Add(pro);
             await _context.SaveChangesAsync();
-=======
+
            // _context.Productos.Remove(existe);
             //_context.Productos.Add(pro);
             existe.Categorias = pro.Categorias;
@@ -84,7 +83,7 @@ namespace WebApiNet6.Repository
 
 
            await _context.SaveChangesAsync();
->>>>>>> Stashed changes
+
 
             return pro;
         }

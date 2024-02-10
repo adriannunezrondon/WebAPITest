@@ -20,7 +20,7 @@ namespace WebApiNet6.Controllers
 
         }
 
-<<<<<<< HEAD
+
         [HttpPost]
         [Route("InsertarProductos")]
         public async Task<ActionResult<Producto>> Insertar(Producto Pro)
@@ -30,21 +30,19 @@ namespace WebApiNet6.Controllers
             return Ok(ModelState);
         
         }
-=======
-<<<<<<< Updated upstream
 
-=======
-        [HttpPost]
-        [Route("InsertarProductos")]
-        public async Task<ActionResult<Producto>> Insertar(Producto Pro)
-        {
-            if (await _IProductoRepository.PostProducto(Pro) is null)
-                return BadRequest(ModelState);
-            return Ok(ModelState);
 
-        }
->>>>>>> Stashed changes
->>>>>>> Main
+
+        //[HttpPost]
+        //[Route("InsertarProductos")]
+        //public async Task<ActionResult<Producto>> Insertar(Producto Pro)
+        //{
+        //    if (await _IProductoRepository.PostProducto(Pro) is null)
+        //        return BadRequest(ModelState);
+        //    return Ok(ModelState);
+
+        //}
+
 
 
 
@@ -54,12 +52,9 @@ namespace WebApiNet6.Controllers
         {
             var result = await _IProductoRepository.GetProducto();
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
+
             return Ok(result);
-=======
->>>>>>> Main
+
             return Ok(result.Value);
         }
 
@@ -68,21 +63,16 @@ namespace WebApiNet6.Controllers
         public async Task<ActionResult<IEnumerable<DTOproductos>>> DTOTodosProducto()
         {
             var result = await _IProductoRepository.DTOTodosProducto();
-<<<<<<< HEAD
+
             if (result !=  null)
-=======
+
             if (result != null)
->>>>>>> Main
+
             {
                 return Ok(result.Value);
             }
             return BadRequest(ModelState);
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> Stashed changes
->>>>>>> Main
         }
 
 
@@ -92,24 +82,22 @@ namespace WebApiNet6.Controllers
 
         public async Task<ActionResult<Producto>> BuscarProductoPorId(int id)
         {
-<<<<<<< HEAD
+
      
             var pro = await _IProductoRepository.GetProductoPorID(id);
             if (pro is null)
                 return BadRequest("El id que pasaste no es correcto!!");
             return Ok(pro.Value);
-=======
-<<<<<<< Updated upstream
-            if (id == 0)
-=======
 
-            var pro = await _IProductoRepository.GetProductoPorID(id);
+            //if (id == 0)
+            //  var pro = await _IProductoRepository.GetProductoPorID(id);
+
             if (pro is null)
->>>>>>> Stashed changes
+
                 return BadRequest("El id que pasaste no es correcto!!");
 
             return await _IProductoRepository.GetProductoPorID(id);
->>>>>>> Main
+
 
         }
 
